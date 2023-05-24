@@ -9,8 +9,8 @@ export default () => {
   route.post("/register", authController.register);
 
   // Users //
-  route.get("/users/", () => console.log(true));
-  route.post("/users/", () => console.log(true));
+  route.get("/users", () => console.log(true));
+  route.post("/users", () => console.log(true));
   route.put("/users/:id", () => console.log(true));
   route.delete("/users/:id", () => console.log(true));
 

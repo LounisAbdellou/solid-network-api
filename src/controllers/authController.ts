@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { IUserInputDTO } from "../interfaces/IUser";
+import { IRegisterInput } from "../interfaces/auth";
 import userModel from "../models/user";
 import { randomBytes } from "crypto";
 import * as argon2 from "argon2";
@@ -37,10 +37,10 @@ export const register = async (
 ) => {
   try {
     const salt = randomBytes(32);
-    const userInputDTO: IUserInputDTO = req.body;
-    const hashedPassword = await argon2.hash(userInputDTO.password, { salt });
+    const registerInput: IRegisterInput = req.body;
+    const hashedPassword = await argon2.hash(registerInput.password, { salt });
     const userRecord = await userModel.create({
-      ...userInputDTO,
+      ...registerInput,
       salt: salt.toString("hex"),
       password: hashedPassword,
     });
