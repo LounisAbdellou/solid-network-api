@@ -1,7 +1,7 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as cors from "cors";
-import routes from "../api";
+import routes from "../routes";
 import config from "../config";
 export default async ({ app }: { app: express.Application }) => {
   /**
